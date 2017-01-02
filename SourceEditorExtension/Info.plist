@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>SourceEditorExtension</string>
+	<string>NSCoding</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -30,11 +30,19 @@
 			<array>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
-					<string>SourceEditorCommand</string>
+					<string>ConvertPropertyCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>$(PRODUCT_BUNDLE_IDENTIFIER).Derp</string>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).encodePropertyCommand</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Derp</string>
+					<string>Convert Properties for encodeWithCoder:</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>ConvertPropertyCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).initPropertyCommand</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Convert Properties for initWithCoder:</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

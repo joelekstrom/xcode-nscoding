@@ -7,18 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5DAFE5331E1A866D00B3D5FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8EA8D1E1A6E7600FA48ED /* Info.plist */; };
+		5DAFE59A1E1A8E4B00B3D5FC /* PropertyDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFE5991E1A8E4B00B3D5FC /* PropertyDeclaration.m */; };
+		5DAFE5A91E1A9D1E00B3D5FC /* PropertyDeclaration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFE5991E1A8E4B00B3D5FC /* PropertyDeclaration.m */; };
+		5DAFE5AB1E1A9D5500B3D5FC /* PropertyDeclarationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFE5AA1E1A9D5500B3D5FC /* PropertyDeclarationTests.m */; };
 		5DD8EA6D1E1A6E6500FA48ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA6C1E1A6E6500FA48ED /* AppDelegate.m */; };
 		5DD8EA701E1A6E6500FA48ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA6F1E1A6E6500FA48ED /* main.m */; };
 		5DD8EA721E1A6E6500FA48ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8EA711E1A6E6500FA48ED /* Assets.xcassets */; };
 		5DD8EA751E1A6E6500FA48ED /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8EA731E1A6E6500FA48ED /* MainMenu.xib */; };
 		5DD8EA831E1A6E7600FA48ED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD8EA821E1A6E7600FA48ED /* Cocoa.framework */; };
 		5DD8EA891E1A6E7600FA48ED /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA881E1A6E7600FA48ED /* SourceEditorExtension.m */; };
-		5DD8EA8C1E1A6E7600FA48ED /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA8B1E1A6E7600FA48ED /* SourceEditorCommand.m */; };
+		5DD8EA8C1E1A6E7600FA48ED /* ConvertPropertyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA8B1E1A6E7600FA48ED /* ConvertPropertyCommand.m */; };
 		5DD8EA901E1A6E7600FA48ED /* SourceEditorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5DD8EA801E1A6E7600FA48ED /* SourceEditorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5DAFE5A41E1A9D0600B3D5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DD8EA601E1A6E6500FA48ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DD8EA671E1A6E6500FA48ED;
+			remoteInfo = NSCodingExtension;
+		};
 		5DD8EA8E1E1A6E7600FA48ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5DD8EA601E1A6E6500FA48ED /* Project object */;
@@ -43,6 +52,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5DAFE5981E1A8E4B00B3D5FC /* PropertyDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDeclaration.h; sourceTree = "<group>"; };
+		5DAFE5991E1A8E4B00B3D5FC /* PropertyDeclaration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDeclaration.m; sourceTree = "<group>"; };
+		5DAFE59F1E1A9D0600B3D5FC /* NSCodingExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSCodingExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DAFE5A31E1A9D0600B3D5FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DAFE5AA1E1A9D5500B3D5FC /* PropertyDeclarationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDeclarationTests.m; sourceTree = "<group>"; };
 		5DD8EA681E1A6E6500FA48ED /* NSCodingExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSCodingExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD8EA6B1E1A6E6500FA48ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DD8EA6C1E1A6E6500FA48ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,12 +69,19 @@
 		5DD8EA861E1A6E7600FA48ED /* SourceEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceEditorExtension.entitlements; sourceTree = "<group>"; };
 		5DD8EA871E1A6E7600FA48ED /* SourceEditorExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorExtension.h; sourceTree = "<group>"; };
 		5DD8EA881E1A6E7600FA48ED /* SourceEditorExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorExtension.m; sourceTree = "<group>"; };
-		5DD8EA8A1E1A6E7600FA48ED /* SourceEditorCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorCommand.h; sourceTree = "<group>"; };
-		5DD8EA8B1E1A6E7600FA48ED /* SourceEditorCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorCommand.m; sourceTree = "<group>"; };
+		5DD8EA8A1E1A6E7600FA48ED /* ConvertPropertyCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConvertPropertyCommand.h; sourceTree = "<group>"; };
+		5DD8EA8B1E1A6E7600FA48ED /* ConvertPropertyCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvertPropertyCommand.m; sourceTree = "<group>"; };
 		5DD8EA8D1E1A6E7600FA48ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5DAFE59C1E1A9D0600B3D5FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD8EA651E1A6E6500FA48ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,11 +100,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DAFE5A01E1A9D0600B3D5FC /* NSCodingExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DAFE5AA1E1A9D5500B3D5FC /* PropertyDeclarationTests.m */,
+				5DAFE5A31E1A9D0600B3D5FC /* Info.plist */,
+			);
+			path = NSCodingExtensionTests;
+			sourceTree = "<group>";
+		};
 		5DD8EA5F1E1A6E6500FA48ED = {
 			isa = PBXGroup;
 			children = (
 				5DD8EA6A1E1A6E6500FA48ED /* NSCodingExtension */,
 				5DD8EA841E1A6E7600FA48ED /* SourceEditorExtension */,
+				5DAFE5A01E1A9D0600B3D5FC /* NSCodingExtensionTests */,
 				5DD8EA811E1A6E7600FA48ED /* Frameworks */,
 				5DD8EA691E1A6E6500FA48ED /* Products */,
 			);
@@ -94,6 +125,7 @@
 			children = (
 				5DD8EA681E1A6E6500FA48ED /* NSCodingExtension.app */,
 				5DD8EA801E1A6E7600FA48ED /* SourceEditorExtension.appex */,
+				5DAFE59F1E1A9D0600B3D5FC /* NSCodingExtensionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,8 +164,10 @@
 			children = (
 				5DD8EA871E1A6E7600FA48ED /* SourceEditorExtension.h */,
 				5DD8EA881E1A6E7600FA48ED /* SourceEditorExtension.m */,
-				5DD8EA8A1E1A6E7600FA48ED /* SourceEditorCommand.h */,
-				5DD8EA8B1E1A6E7600FA48ED /* SourceEditorCommand.m */,
+				5DD8EA8A1E1A6E7600FA48ED /* ConvertPropertyCommand.h */,
+				5DD8EA8B1E1A6E7600FA48ED /* ConvertPropertyCommand.m */,
+				5DAFE5981E1A8E4B00B3D5FC /* PropertyDeclaration.h */,
+				5DAFE5991E1A8E4B00B3D5FC /* PropertyDeclaration.m */,
 				5DD8EA8D1E1A6E7600FA48ED /* Info.plist */,
 				5DD8EA851E1A6E7600FA48ED /* Supporting Files */,
 			);
@@ -151,6 +185,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5DAFE59E1E1A9D0600B3D5FC /* NSCodingExtensionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DAFE5A61E1A9D0600B3D5FC /* Build configuration list for PBXNativeTarget "NSCodingExtensionTests" */;
+			buildPhases = (
+				5DAFE59B1E1A9D0600B3D5FC /* Sources */,
+				5DAFE59C1E1A9D0600B3D5FC /* Frameworks */,
+				5DAFE59D1E1A9D0600B3D5FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DAFE5A51E1A9D0600B3D5FC /* PBXTargetDependency */,
+			);
+			name = NSCodingExtensionTests;
+			productName = NSCodingExtensionTests;
+			productReference = 5DAFE59F1E1A9D0600B3D5FC /* NSCodingExtensionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5DD8EA671E1A6E6500FA48ED /* NSCodingExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DD8EA791E1A6E6500FA48ED /* Build configuration list for PBXNativeTarget "NSCodingExtension" */;
@@ -196,6 +248,12 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Joel Ekström";
 				TargetAttributes = {
+					5DAFE59E1E1A9D0600B3D5FC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5RNJHF933P;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5DD8EA671E1A6E6500FA48ED;
+					};
 					5DD8EA671E1A6E6500FA48ED = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 5RNJHF933P;
@@ -223,11 +281,19 @@
 			targets = (
 				5DD8EA671E1A6E6500FA48ED /* NSCodingExtension */,
 				5DD8EA7F1E1A6E7600FA48ED /* SourceEditorExtension */,
+				5DAFE59E1E1A9D0600B3D5FC /* NSCodingExtensionTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5DAFE59D1E1A9D0600B3D5FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD8EA661E1A6E6500FA48ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,13 +307,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DAFE5331E1A866D00B3D5FC /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5DAFE59B1E1A9D0600B3D5FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DAFE5A91E1A9D1E00B3D5FC /* PropertyDeclaration.m in Sources */,
+				5DAFE5AB1E1A9D5500B3D5FC /* PropertyDeclarationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DD8EA641E1A6E6500FA48ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,13 +336,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD8EA891E1A6E7600FA48ED /* SourceEditorExtension.m in Sources */,
-				5DD8EA8C1E1A6E7600FA48ED /* SourceEditorCommand.m in Sources */,
+				5DAFE59A1E1A8E4B00B3D5FC /* PropertyDeclaration.m in Sources */,
+				5DD8EA8C1E1A6E7600FA48ED /* ConvertPropertyCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5DAFE5A51E1A9D0600B3D5FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DD8EA671E1A6E6500FA48ED /* NSCodingExtension */;
+			targetProxy = 5DAFE5A41E1A9D0600B3D5FC /* PBXContainerItemProxy */;
+		};
 		5DD8EA8F1E1A6E7600FA48ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5DD8EA7F1E1A6E7600FA48ED /* SourceEditorExtension */;
@@ -288,6 +368,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5DAFE5A71E1A9D0600B3D5FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5RNJHF933P;
+				INFOPLIST_FILE = NSCodingExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ekstrom.NSCodingExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSCodingExtension.app/Contents/MacOS/NSCodingExtension";
+			};
+			name = Debug;
+		};
+		5DAFE5A81E1A9D0600B3D5FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5RNJHF933P;
+				INFOPLIST_FILE = NSCodingExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ekstrom.NSCodingExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSCodingExtension.app/Contents/MacOS/NSCodingExtension";
+			};
+			name = Release;
+		};
 		5DD8EA771E1A6E6500FA48ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5RNJHF933P;
 				INFOPLIST_FILE = NSCodingExtension/Info.plist;
@@ -392,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5RNJHF933P;
 				INFOPLIST_FILE = NSCodingExtension/Info.plist;
@@ -405,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SourceEditorExtension/SourceEditorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5RNJHF933P;
 				INFOPLIST_FILE = SourceEditorExtension/Info.plist;
@@ -420,6 +531,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SourceEditorExtension/SourceEditorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5RNJHF933P;
 				INFOPLIST_FILE = SourceEditorExtension/Info.plist;
@@ -434,6 +546,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5DAFE5A61E1A9D0600B3D5FC /* Build configuration list for PBXNativeTarget "NSCodingExtensionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DAFE5A71E1A9D0600B3D5FC /* Debug */,
+				5DAFE5A81E1A9D0600B3D5FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5DD8EA631E1A6E6500FA48ED /* Build configuration list for PBXProject "NSCodingExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
