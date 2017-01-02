@@ -16,8 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *attributes;
+@property (nonatomic, copy, nullable) NSString *attributes;
+@property (nonatomic, copy, nullable) Class propertyClass;
 @property (nonatomic, assign) BOOL isPointer;
+
+@end
+
+@interface PropertyDeclaration (NSCodingUtilities)
+
+- (nullable NSString *)stringForEncodingWithNSCoder;
+- (nullable NSString *)stringForInitializingWithNSCoder;
 
 @end
 
