@@ -8,6 +8,7 @@
 
 #import "ConvertPropertyCommand.h"
 #import "PropertyDeclaration.h"
+#import <AppKit/AppKit.h>
 
 @implementation ConvertPropertyCommand
 
@@ -15,6 +16,12 @@
 {
     XCSourceTextRange *selection = invocation.buffer.selections.firstObject;
     if (selection == nil) {
+        completionHandler(nil);
+        return;
+    }
+
+    if ([invocation.commandIdentifier hasSuffix:@"copyToPasteboard"]) {
+        [self copyNSCodingImplementationsToPasteboardForSelection:selection withInvocation:invocation];
         completionHandler(nil);
         return;
     }
@@ -40,6 +47,54 @@
     }
 
     completionHandler(nil);
+}
+
+- (void)copyNSCodingImplementationsToPasteboardForSelection:(XCSourceTextRange *)selection withInvocation:(XCSourceEditorCommandInvocation *)invocation
+{
+    NSMutableArray *declarations = [NSMutableArray new];
+    for (NSInteger i = selection.start.line; i < selection.end.line; i++) {
+        NSString *line = invocation.buffer.lines[i];
+        PropertyDeclaration *declaration = [[PropertyDeclaration alloc] initWithString:line];
+        if (declaration) {
+            [declarations addObject:declaration];
+        }
+    }
+
+    if (declarations.count == 0) {
+        return;
+    }
+
+    NSMutableString *result = [[NSMutableString alloc] initWithString:@"- (instancetype)initWithCoder:(NSCoder *)aDecoder {\n"];
+    NSString *indentation = [self singleIndentationForBuffer:invocation.buffer];
+
+    [result appendFormat:@"%@if (self = [super init]) {\n", indentation];
+    for (PropertyDeclaration *declaration in declarations) {
+        NSString *line = [declaration stringForInitializingWithNSCoder];
+        if (line) {
+            [result appendFormat:@"%@%@%@\n", indentation, indentation, line];
+        }
+    }
+
+    [result appendFormat:@"%@}\n}\n\n- (void)encodeWithCoder:(NSCoder *)aCoder {\n", indentation];
+    for (PropertyDeclaration *declaration in declarations) {
+        NSString *line = [declaration stringForEncodingWithNSCoder];
+        if (line) {
+            [result appendFormat:@"%@%@%@\n", indentation, indentation, line];
+        }
+    }
+    [result appendString:@"}\n"];
+
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] writeObjects:@[[result copy]]];
+}
+
+- (NSString *)singleIndentationForBuffer:(XCSourceTextBuffer *)buffer
+{
+    if (buffer.usesTabsForIndentation) {
+        return @"\t";
+    }
+
+    return [@"" stringByPaddingToLength:buffer.indentationWidth withString:@" " startingAtIndex:0];
 }
 
 @end

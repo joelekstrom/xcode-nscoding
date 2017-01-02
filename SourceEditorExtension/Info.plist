@@ -44,6 +44,14 @@
 					<key>XCSourceEditorCommandName</key>
 					<string>Convert Properties for initWithCoder:</string>
 				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>ConvertPropertyCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).copyToPasteboard</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Copy NSCoding-implementations to pasteboard</string>
+				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>SourceEditorExtension</string>
