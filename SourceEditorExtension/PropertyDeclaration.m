@@ -37,7 +37,6 @@
         self.type = [string substringWithRange:[result rangeAtIndex:2]];
         self.isPointer = [[string substringWithRange:[result rangeAtIndex:3]] containsString:@"*"];
         self.name = [string substringWithRange:[result rangeAtIndex:4]];
-        self.propertyClass = NSClassFromString(self.type);
     }
     return self;
 }
@@ -58,9 +57,9 @@
 
 - (NSString *)stringForInitializingWithNSCoder
 {
-    if ([self classSupportsSecureCoding]) {
+    if (self.isPointer) {
         NSString * const secureDecodeFormat = @"self.%@ = [aDecoder decodeObjectOfClass:[%@ class] forKey:NSStringFromSelector(@selector(%@))];";
-        return [NSString stringWithFormat:secureDecodeFormat, self.name, NSStringFromClass(self.propertyClass), self.name];
+        return [NSString stringWithFormat:secureDecodeFormat, self.name, self.type, self.name];
     } else {
         NSString *decodingType = [self typeForNSCoder];
         if (decodingType) {
@@ -71,21 +70,9 @@
     return nil;
 }
 
-- (BOOL)classSupportsNSCoding
-{
-    return self.isPointer && [self.propertyClass conformsToProtocol:@protocol(NSCoding)];
-}
-
-- (BOOL)classSupportsSecureCoding
-{
-    return [self classSupportsNSCoding]
-    && [self.propertyClass conformsToProtocol:@protocol(NSSecureCoding)]
-    && [(Class<NSSecureCoding>)self.propertyClass supportsSecureCoding];
-}
-
 - (nullable NSString *)typeForNSCoder
 {
-    if ([self classSupportsNSCoding]) {
+    if (self.isPointer || [self.type isEqualToString:@"id"]) {
         return @"Object";
     } else {
         return [self primitiveTypeForNSCoder];
