@@ -12,7 +12,6 @@
 		5DAFE5AB1E1A9D5500B3D5FC /* PropertyDeclarationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFE5AA1E1A9D5500B3D5FC /* PropertyDeclarationTests.m */; };
 		5DD8EA6D1E1A6E6500FA48ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA6C1E1A6E6500FA48ED /* AppDelegate.m */; };
 		5DD8EA701E1A6E6500FA48ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA6F1E1A6E6500FA48ED /* main.m */; };
-		5DD8EA721E1A6E6500FA48ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8EA711E1A6E6500FA48ED /* Assets.xcassets */; };
 		5DD8EA751E1A6E6500FA48ED /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8EA731E1A6E6500FA48ED /* MainMenu.xib */; };
 		5DD8EA831E1A6E7600FA48ED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD8EA821E1A6E7600FA48ED /* Cocoa.framework */; };
 		5DD8EA891E1A6E7600FA48ED /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8EA881E1A6E7600FA48ED /* SourceEditorExtension.m */; };
@@ -61,7 +60,6 @@
 		5DD8EA6B1E1A6E6500FA48ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DD8EA6C1E1A6E6500FA48ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5DD8EA6F1E1A6E6500FA48ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5DD8EA711E1A6E6500FA48ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DD8EA741E1A6E6500FA48ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5DD8EA761E1A6E6500FA48ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DD8EA801E1A6E7600FA48ED /* SourceEditorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SourceEditorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +133,6 @@
 			children = (
 				5DD8EA6B1E1A6E6500FA48ED /* AppDelegate.h */,
 				5DD8EA6C1E1A6E6500FA48ED /* AppDelegate.m */,
-				5DD8EA711E1A6E6500FA48ED /* Assets.xcassets */,
 				5DD8EA731E1A6E6500FA48ED /* MainMenu.xib */,
 				5DD8EA761E1A6E6500FA48ED /* Info.plist */,
 				5DD8EA6E1E1A6E6500FA48ED /* Supporting Files */,
@@ -298,7 +295,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DD8EA721E1A6E6500FA48ED /* Assets.xcassets in Resources */,
 				5DD8EA751E1A6E6500FA48ED /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
