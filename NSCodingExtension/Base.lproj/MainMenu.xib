@@ -695,7 +695,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="9Mt-45-3me">
                             <font key="font" metaFont="system"/>
-                            <string key="title">The extension should now be installed. You can enable it in System Preferences -&gt; Extensions -&gt; Xcode Source Editor. This application can be closed and deleted.</string>
+                            <string key="title">The extension should now be installed. You can enable it in System Preferences -&gt; Extensions -&gt; Xcode Source Editor. This application can now be closed.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
