@@ -8,35 +8,64 @@
 
 #import "PropertyDeclaration.h"
 
+typedef NS_ENUM(NSInteger, PropertyTokenType) {
+    PropertyTokenTypePropertyDeclaration,
+    PropertyTokenTypeAttributes,
+    PropertyTokenTypeName,
+    PropertyTokenTypePointer,
+    PropertyTokenTypeExtra
+};
+
 @implementation PropertyDeclaration
 
 - (instancetype)initWithString:(NSString *)string
 {
     if (self = [super init]) {
-        // This regular expression matches the following:
-        // 1. Attributes, for example (nonatomic,strong)
-        // 2. Type/class name
-        // 3. Pointer star (*), or whitespace if non-pointer type
-        // 4. Property name
-        NSString * const pattern = @"^\\s*@property\\s*(\\([a-z,\\s]*\\)|\\s+)\\s*(\\w+)\\s*(\\s*\\*\\s*|\\s+)\\s*(\\w+)\\s*;";
+        NSMutableString *mutableString = [string mutableCopy];
 
-        NSError *error = nil;
-        NSRegularExpression *regularExpression = [[NSRegularExpression alloc] initWithPattern:pattern options:kNilOptions error:&error];
-        if (error) {
-            NSLog(@"Error when parsing pattern: %@", pattern);
+        // Remove @property, we only need it to verify that it is indeed a property
+        NSRange propertyRange = [mutableString rangeOfString:@"@property"];
+        if (propertyRange.location == NSNotFound) {
+            return nil;
+        } else {
+            [mutableString deleteCharactersInRange:propertyRange];
         }
 
-        NSArray<NSTextCheckingResult *> *matches = [regularExpression matchesInString:string options:kNilOptions range:NSMakeRange(0, string.length)];
-        if (matches.count == 0) {
+        // Parse and remove attributes if they exist
+        NSRange attributesRange = [mutableString rangeOfString:@"\\(.*\\)" options:NSRegularExpressionSearch];
+        if (attributesRange.location != NSNotFound) {
+            NSMutableCharacterSet *charactersToTrim = [NSMutableCharacterSet whitespaceCharacterSet];
+            [charactersToTrim addCharactersInString:@"()"];
+            self.attributes = [[mutableString substringWithRange:attributesRange] stringByTrimmingCharactersInSet:charactersToTrim];
+            [mutableString deleteCharactersInRange:attributesRange];
+        }
+
+        // Remove typed collections. For example, if the type is NSArray<NSArray<NSString *> *> *,
+        // we're only interested in knowing that the type is NSArray *
+        NSRange collectionTypesRange = [mutableString rangeOfString:@"<.*>" options:NSRegularExpressionSearch];
+        if (collectionTypesRange.location != NSNotFound) {
+            [mutableString deleteCharactersInRange:collectionTypesRange];
+        }
+
+        // Check if this property is a pointer (by simply checking if the string contains a '*')
+        self.isPointer = [mutableString rangeOfString:@"*"].location != NSNotFound;
+
+        // Tokenize the string and filter away whitespace. The remaining tokens should be:
+        // 1. type, 2. name, 3+. any extras like NS_UNAVAILABLE.
+        NSMutableCharacterSet *separators = [NSMutableCharacterSet whitespaceCharacterSet];
+        [separators addCharactersInString:@"*;"];
+        NSMutableArray *tokens = [[mutableString componentsSeparatedByCharactersInSet:separators] mutableCopy];
+        [tokens removeObjectsAtIndexes:[tokens indexesOfObjectsPassingTest:^BOOL(NSString *token, NSUInteger idx, BOOL *stop) {
+            return token.length == 0;
+        }]];
+
+        // Exit if we have less than two tokens. We must have at least a type and a name
+        if (tokens.count < 2) {
             return nil;
         }
 
-        // We're only interested in the first result of a line. It's up to the consuming program to separate multiple properties on a single line.
-        NSTextCheckingResult *result = [matches firstObject];
-        self.attributes = [string substringWithRange:[result rangeAtIndex:1]];
-        self.type = [string substringWithRange:[result rangeAtIndex:2]];
-        self.isPointer = [[string substringWithRange:[result rangeAtIndex:3]] containsString:@"*"];
-        self.name = [string substringWithRange:[result rangeAtIndex:4]];
+        self.type = tokens[0];
+        self.name = tokens[1];
     }
     return self;
 }
@@ -52,7 +81,7 @@
         NSString * const encodeFormat = @"[aCoder encode%@:self.%@ forKey:NSStringFromSelector(@selector(%@))];";
         return [NSString stringWithFormat:encodeFormat, encodingType, self.name, self.name];
     }
-    return nil;
+    return [NSString stringWithFormat:@"#warning Could not determine type for NSCoding of property: %@", self.name];;
 }
 
 - (NSString *)stringForInitializingWithNSCoder
@@ -67,7 +96,7 @@
             return [NSString stringWithFormat:decodeFormat, self.name, decodingType, self.name];
         }
     }
-    return nil;
+    return [NSString stringWithFormat:@"#warning Could not determine type for NSCoding of property: %@", self.name];;
 }
 
 - (nullable NSString *)typeForNSCoder
