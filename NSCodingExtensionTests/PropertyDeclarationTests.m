@@ -20,11 +20,10 @@
     XCTAssertNil([[PropertyDeclaration alloc] initWithString:@"NSInteger class;"]);
     XCTAssertNil([[PropertyDeclaration alloc] initWithString:@"@property (nonatomic, strong) NamelessProperty;"]);
     XCTAssertNil([[PropertyDeclaration alloc] initWithString:@"@property (nonatomic, weak) *classlessProperty;"]);
-    XCTAssertNil([[PropertyDeclaration alloc] initWithString:@"@property (nonatomic) NSNumber *propertyWithoutSemiColon"]);
 }
 
 - (void)testTypeParsing {
-    PropertyDeclaration *property = [[PropertyDeclaration alloc] initWithString:@"@property (nonatomic, strong) NSNumber *name;"];
+    PropertyDeclaration *property = [[PropertyDeclaration alloc] initWithString:@"@property (nonatomic, strong, getter=myName) NSNumber *name NS_UNAVAILABLE;"];
     XCTAssertEqualObjects(property.type, @"NSNumber");
 
     property = [[PropertyDeclaration alloc] initWithString:@"@property int name;"];
@@ -51,6 +50,12 @@
 
     property = [[PropertyDeclaration alloc] initWithString:@"@property int anInt;"];
     XCTAssertFalse(property.isPointer);
+}
+
+- (void)testCollectionTypeAwareness {
+    PropertyDeclaration *property = [[PropertyDeclaration alloc] initWithString:@"@property (nonatomic, strong) NSArray<NSArray<NSNumber *> *> *array;"];
+    XCTAssertEqualObjects(property.type, @"NSArray");
+    XCTAssertEqualObjects(property.name, @"array");
 }
 
 @end
