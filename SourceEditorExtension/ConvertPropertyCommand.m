@@ -75,7 +75,7 @@
         }
     }
 
-    [result appendFormat:@"%@}\n}\n\n- (void)encodeWithCoder:(NSCoder *)aCoder {\n", indentation];
+    [result appendFormat:@"%@}\n%@return self;\n}\n\n- (void)encodeWithCoder:(NSCoder *)aCoder {\n", indentation, indentation];
     for (PropertyDeclaration *declaration in declarations) {
         NSString *line = [declaration stringForEncodingWithNSCoder];
         if (line) {
